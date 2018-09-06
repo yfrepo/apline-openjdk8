@@ -11,9 +11,9 @@ RUN apk update \
 RUN apk add --no-cache openjdk8
 RUN { \
         echo '#!/bin/ash'; \
-        echo 'set -e'; \
-        echo; \
-        echo 'export JAVA_HOME=$(dirname $(dirname $(dirname $(readlink -f $(which java)))))'; \
+	echo 'set -e'; \
+	echo; \
+	echo 'export JAVA_HOME=$(dirname $(dirname $(dirname $(readlink -f $(which java)))))'; \
 	echo 'export PATH=$PATH:$JAVA_HOME/bin'; \
     } > /etc/profile.d/java.sh \
     && chmod +x /etc/profile.d/java.sh
